@@ -1,0 +1,7 @@
+mi-entorno
+mi-entorno/**
+mi-entorno/Lib/*
+__pycache__
+**/__pycache__/
+database.sqlite
+.vscode
