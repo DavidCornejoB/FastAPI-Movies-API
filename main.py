@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 
 # ROUTER:
 from routers.movie import movie_router
@@ -30,12 +31,16 @@ app.add_middleware(ErrorHandler)
 app.include_router(movie_router)
 app.include_router(user_router)
 
+# MANEJO DE ARCHIVOS ESTÁTICOS (CSS, JS)
+app.mount("/static", StaticFiles(directory="./public/static"), name="static")
+
 # CREACIÓN DE TODAS LAS TABLAS DE LA BASE DE DATOS:
 Base.metadata.create_all(bind=engine)
 
 """
 ENDPOINT PARA HOME
 """
-@app.get("/", tags=["home"])
+@app.get("/", tags=["home"], response_class=FileResponse)
 def message():
-    return HTMLResponse("<h1>HELLO</h1>")
+    html_address = './public/static/index.html'
+    return FileResponse(html_address, status_code=200)
