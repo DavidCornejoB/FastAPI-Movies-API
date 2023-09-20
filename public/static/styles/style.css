@@ -19,11 +19,6 @@ header {
   margin: 30px;
 }
 
-header .title {
-  color: var(--mint);
-  text-align: center;
-}
-
 .bg-image {
     box-sizing: border-box;
     /* The image used */
@@ -64,7 +59,7 @@ main {
 
 .descripcion {
   margin: 12px;
-  padding: 20px 100px 20px 100px;
+  padding: 20px 80px 20px 80px;
 }
 
 .descripcion p {
